@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd       
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	<description>Spring MVC 配置</description>
+	
+    <!--1,开启springmvc注解模式
+    a.自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+    b.默认提供一系列的功能:数据绑定，数字和日期的format@NumberFormat,@DateTimeFormat
+    c:xml,json的默认读写支持-->
+    <mvc:annotation-driven/>
+
+    <!--2.静态资源默认servlet配置-->
+    <!--
+        1).加入对静态资源处理：js,gif,png
+        2).允许使用 "/" 做整体映射
+    -->
+    <mvc:default-servlet-handler/>
+
+    <!--3：配置JSP 显示ViewResolver-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="pages/views/seckill/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--4:扫描web相关的controller-->
+    <context:component-scan base-package="com.wangtao.blog"/>
+    <!-- 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    </bean>
+     -->
+    <!-- 拦截器配置-start -->
+    <!-- 
+    <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.didong.manager.frame.interceptor.SystemInterceptor" />
+	    </mvc:interceptor>
+	</mvc:interceptors>
+	 -->
+	<!-- 拦截器配置-end -->
+	
+</beans>
+

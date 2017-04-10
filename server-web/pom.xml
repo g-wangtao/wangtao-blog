@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>server-web</artifactId>
+	<packaging>war</packaging>
+	<name>${project.artifactId}</name>
+	
+	<parent>
+		<groupId>com.wangtao.blog</groupId>
+		<artifactId>blog-server</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<dependencies>
+		<!--3.Servlet web相关依赖 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 数据库依赖 start -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- druid阿里巴巴数据库连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+		</dependency>
+		<!-- 框架Dao层依赖 start -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+		</dependency>
+		<!-- 框架Dao层依赖 end -->
+		<!-- 添加spring依赖 start -->
+		<!--1)spring核心依赖 start -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		<!--3)springweb相关依赖 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<!--4)spring test相关依赖 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+
+		<!-- blog jar backage -->
+		<dependency>
+			<groupId>com.wangtao.blog</groupId>
+			<artifactId>server-dao</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.wangtao.blog</groupId>
+			<artifactId>server-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
+				<filtering>true</filtering>
+				<targetPath>${project.build.directory}/webapp</targetPath>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<!-- 启动方式：tomcat7 -->
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<!-- 配置tomcat属性 -->
+				<configuration>
+					<path>/wangtao-blog</path>
+					<port>80</port>
+				</configuration>
+				<!-- 配置package时启动 -->
+				<!-- <executions> <execution> <phase>package</phase> <goals> <goal>run</goal> 
+					</goals> </execution> </executions> -->
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<public.type>classpath:env/dev/application.properties</public.type>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<public.type>classpath:env/test/application.properties</public.type>
+			</properties>
+		</profile>
+		<profile>
+			<id>product</id>
+			<properties>
+				<public.type>classpath:env/product/application.properties</public.type>
+			</properties>
+		</profile>
+	</profiles>
+</project>
