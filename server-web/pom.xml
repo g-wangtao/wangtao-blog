@@ -6,14 +6,21 @@
 	<artifactId>server-web</artifactId>
 	<packaging>war</packaging>
 	<name>${project.artifactId}</name>
-	
+
 	<parent>
 		<groupId>com.wangtao.blog</groupId>
 		<artifactId>blog-server</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<dependencies>
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+
 		<!--3.Servlet web相关依赖 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

@@ -1,5 +1,6 @@
 package com.wangtao.blog.web.admin;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/blogger")
 public class BloggerController {
 
-	//private final Logger logger = Logger.getLogger(this.getClass().getName());
+	private final static Logger logger = Logger.getLogger(BloggerController.class);
 
-	
+	public static void main(String[] args) {
+		System.out.println("start!");
+		logger.error("test log4j mell 222");
+		System.out.println("end!");
+	}
 }
