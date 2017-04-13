@@ -26,6 +26,10 @@ public class BusinessException extends RuntimeException implements Serializable,
      * 异常 arguments
      */
     private Object[] arguments;
+    
+    public BusinessException() {
+        super();
+    }
 
     public BusinessException(String msg) {
         super(msg);
