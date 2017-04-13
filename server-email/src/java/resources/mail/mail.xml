@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<!-- 系统线程管理类 -->
+	<bean id="threadTaskExecutor" class="com.wangtao.blog.common.threadexecutor.ThreadTaskExecutor">
+        <property name="corePoolSize" value="50"></property>
+        <property name="maxPoolSize" value="350"></property>
+        <property name="keepAliveSeconds" value="120"></property>
+        <property name="daemon" value="true"></property>
+	</bean>
+	
+	<bean id="emailService" class="com.wangtao.blog.email.service.impl.EmailServiceImpl">
+		<property name="mailSender" ref="mailSender"></property>
+		<property name="threadTaskExecutor" ref="threadTaskExecutor"></property>
+	</bean>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>smtp.sina.com.cn</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">25000</prop>
+				<prop key="mail.smtp.socketFactory.fallback">false</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+		<property name="username">
+			<value>qMOEBkybMOcGPlVrD7sYoBFlVV0244kB</value>
+		</property>
+		<property name="password">
+			<value>Fp5v++3czdn8hNBC6LiPfQ==</value>
+		</property>
+		<property name="port">
+			<value>25</value>
+		</property>
+	</bean>
+</beans>
+

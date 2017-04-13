@@ -25,14 +25,14 @@ public class EmilTest{
 	@Resource
 	private IEmailService emailService;
 	
-	//@Test
+	@Test
 	public void testAsyncSendEmailByMessage() throws Exception {
 		EmailEntity email = new EmailEntity();
 		email.setContent("hello spring mail ！");
 		email.setEmails("773995514@qq.com");
-		//email.setPwd(true);
-		email.setTitle("sync");
-		emailService.syncSendEmailByMessage(email);
+		email.setPwd(true);
+		email.setTitle("aync");
+		emailService.asyncSendEmailByMessage(email);
 	}
     
 	@Test
@@ -40,8 +40,8 @@ public class EmilTest{
 		EmailEntity email = new EmailEntity();
 		email.setContent("hello spring mail ！");
 		email.setEmails("773995514@qq.com");
-		//email.setPwd(true);
-		email.setTitle("aync");
+		email.setPwd(true);
+		email.setTitle("sync");
 		emailService.syncSendEmailByMessage(email);
 	}
 	
