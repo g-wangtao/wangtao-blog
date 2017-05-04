@@ -1,4 +1,4 @@
-package com.wangtao.blog.common.enums.seckill;
+package com.wangtao.blog.common.constant.enums.seckill;
 
 /**
  * Created by codingBoy on 16/11/28.
