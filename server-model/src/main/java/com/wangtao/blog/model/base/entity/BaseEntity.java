@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 
- * @author
- *
+ * @ClassName:BaseEntity
+ * @author: KarlWang
+ * @Description: TODO(系统基础实体类) 
+ * @date:2017年5月4日 下午2:13:45
+ * @see com.wangtao.blog.model.base.entity.BaseEntity
  */
 public class BaseEntity implements Serializable {
 
