@@ -3,11 +3,12 @@
 <log4j:configuration debug="false"
 	xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+	<!-- 输出日志到控制台 -->
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %c [%t] %m%n" />
 		</layout>
-		<!--过滤器设置输出的级别-->
+		<!--过滤器设置输出的级别 -->
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
 			<param name="levelMin" value="info" />
 			<param name="levelMin" value="debug" />
@@ -15,7 +16,7 @@
 			<param name="AcceptOnMatch" value="true" />
 		</filter>
 	</appender>
-	  
+
 	<appender name="logfile" class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="${catalina.home}/logs/application.log" />
 		<param name="ImmediateFlush" value="true" />
@@ -25,11 +26,11 @@
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %c [%t] %m%n" />
 		</layout>
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
-		    <param name="LevelMin" value="info" />
+			<param name="LevelMin" value="info" />
 			<param name="LevelMax" value="error" />
 		</filter>
 	</appender>
-	
+
 	<appender name="info" class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="${catalina.home}/logs/info.log" />
 		<param name="ImmediateFlush" value="true" />
@@ -39,11 +40,11 @@
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %c [%t] %m%n" />
 		</layout>
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
-		    <param name="LevelMin" value="info" />
+			<param name="LevelMin" value="info" />
 			<param name="LevelMax" value="info" />
 		</filter>
 	</appender>
-	
+
 	<appender name="warn" class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="${catalina.home}/logs/warn.log" />
 		<param name="ImmediateFlush" value="true" />
@@ -53,11 +54,11 @@
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p %c [%t] %m%n" />
 		</layout>
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
-		    <param name="LevelMin" value="warn" />
+			<param name="LevelMin" value="warn" />
 			<param name="LevelMax" value="warn" />
 		</filter>
 	</appender>
-	
+
 	<appender name="error" class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="${catalina.home}/logs/error.log" />
 		<param name="MaxFileSize" value="200MB" />
@@ -99,23 +100,54 @@
 		<appender-ref ref="warn" />
 		<appender-ref ref="error" />
 	</appender>
-	
-	<!-- <logger name="com.ibatis" />
-	<logger name="com.ibatis" />
-	<logger name="com.ibatis.common.jdbc.SimpleDataSource" />
-	<logger name="com.ibatis.common.jdbc.ScriptRunner" />
-	<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" />
-	<logger name="java.sql.Connection" />
-	<logger name="java.sql.Statement" />
-	<logger name="java.sql.PreparedStatement" />
-	<logger name="java.sql.ResultSet" /> -->
+
+	<!-- 发ERROR邮件 -->
+	<appender name="mail" class="org.apache.log4j.net.SMTPAppender">
+		<!-- 日子输出级别，只有ERROR以上时才会发送！ -->
+		<param name="threshold" value="ERROR" />
+		<!-- 缓存文件大小，日志达到512K时发送Email -->
+		<param name="BufferSize" value="512" />
+		<param name="From" value="simple52711@sina.com" />
+		<param name="SMTPHost" value="smtp.sina.com" />
+		<param name="Subject" value="juyee-log4jMessage" />
+		<param name="To" value="773995514@qq.com" />
+		<param name="SMTPUsername" value="simple52711@sina.com" />
+		<param name="SMTPPassword" value="@wangtao5." />
+		<param name="LocationInfo" value="false" />
+		<param name="SMTPDebug" value="false" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss.SSS} [%p]-[%c] %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="com.ibatis" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="Console" />
+	</logger>
+	<logger name="Java.sql.Connection" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="Console" />
+	</logger>
+	<logger name="java.sql.Statement" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="Console" />
+	</logger>
+	<logger name="java.sql.PreparedStatement" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="Console" />
+	</logger>
+	<logger name="java.sql.ResultSet" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="Console" />
+	</logger>
 
 	<root>
 		<!-- 设置信息打印最低的日志级别 -->
 		<priority value="info" />
-		<appender-ref ref="stdout" />
+		<appender-ref ref="Console" />
 		<appender-ref ref="ASYNC" />
+		<appender-ref ref="mail" />
 	</root>
-	
+
 </log4j:configuration>
 
