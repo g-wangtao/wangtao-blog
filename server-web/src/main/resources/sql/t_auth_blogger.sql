@@ -1,0 +1,20 @@
+CREATE TABLE `t_auth_blogger`(
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+	`user_name` VARCHAR(32)  DEFAULT NULL COMMENT '用户名',
+	`password` VARCHAR(32)  DEFAULT NULL COMMENT '密码',
+	`type` VARCHAR(32) DEFAULT NULL COMMENT '博主类型',
+	`nick_name` VARCHAR(32) DEFAULT NULL COMMENT '昵称',
+	`email` VARCHAR(32) DEFAULT NULL COMMENT '电子邮箱',
+	`sign` VARCHAR(256) DEFAULT NULL COMMENT '个性签名',
+	`profile` TEXT DEFAULT NULL COMMENT '个人简介',
+	`head_img_url` VARCHAR(256)  DEFAULT NULL COMMENT '头像存储地址',
+	`last_login` DATETIME DEFAULT NULL COMMENT '最后登陆时间', 
+	`active` char(1) DEFAULT NULL COMMENT  '用户状态',
+	`create_date` DATETIME DEFAULT NULL COMMENT '创建时间',
+	`create_user` VARCHAR(32)  DEFAULT NULL COMMENT'创建用户',
+	`modify_date` DATETIME DEFAULT NULL COMMENT'修改时间',
+	`modify_user` VARCHAR(32) DEFAULT NULL COMMENT'修改用户',
+	PRIMARY KEY(`id`),
+	UNIQUE KEY `indx_user_name` (`user_name`),
+	UNIQUE KEY `indx_email` (`email`)
+)ENGINE =InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='博主表';
