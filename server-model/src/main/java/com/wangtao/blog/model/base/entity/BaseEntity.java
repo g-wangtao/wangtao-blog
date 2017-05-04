@@ -16,6 +16,8 @@ public class BaseEntity implements Serializable {
 	private static final long serialVersionUID = 5226101072486456137L;
 
 	private long id; // 编号
+	
+	private char active; // 是否有效
 
 	private String crateUser; // 创建人
 
@@ -24,8 +26,6 @@ public class BaseEntity implements Serializable {
 	private String modifyUser; // 修改人
 
 	private Date modifyDate; // 修改时间
-
-	private short active; // 是否有效
 
 	public long getId() {
 		return id;
@@ -67,11 +67,11 @@ public class BaseEntity implements Serializable {
 		this.modifyDate = modifyDate;
 	}
 
-	public short getActive() {
+	public char getActive() {
 		return active;
 	}
 
-	public void setActive(short active) {
+	public void setActive(char active) {
 		this.active = active;
 	}
 
