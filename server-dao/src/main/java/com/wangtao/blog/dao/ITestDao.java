@@ -4,7 +4,6 @@ import com.wangtao.blog.model.entity.TestEntity;
 
 /**
  * Hello world!
- *
  */
 public interface ITestDao {
     
