@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wangtao.blog.dao.region.IBaseRegionDao">
+  	
+    <!-- <select id="queryAll" resultType="com.wangtao.blog.model.entity.region.BaseRegionEntity">
+        SELECT * FROM t_bas_region
+    </select> -->
+  	
+  	<select id = "queryByRegionCode" resultType="com.wangtao.blog.model.entity.region.BaseRegionEntity">
+  		SELECT * FROM t_bas_region WHERE region_code = #{regionType}
+  	</select>
+  	
+  	<select id="queryByRegionType" resultType="com.wangtao.blog.model.entity.region.BaseRegionEntity">
+  		SELECT * FROM t_bas_region WHERE region_type = #{regionType}
+  	</select>
+  	
+  	<select id="queryByParentCode" resultType="com.wangtao.blog.model.entity.region.BaseRegionEntity">
+  		SELECT * FROM t_bas_region WHERE parent_code = #{parentCode}
+  	</select>
+  </mapper>

@@ -11,7 +11,37 @@ function loginHandler() {
 		switchVerifyImg();
 		return;
 	}
-	
+	$.ajax({
+		type: 'POST',
+		url: didMain.contentPath + 'sqrz/expReg/'+type,
+		processData: true,
+		data: $(".sqrzRegParamsFrom").serialize(),
+		success: function(callData) {
+			var json = eval('(' + callData + ')');
+			if(json) {
+				if(isUndefined(json.message)) {
+					showTipWin(true, json.message);
+				}
+				else {
+					var content = '恭喜您，入驻递咚平台成功！<br>关闭窗口后即可立即登录递咚管理平台！';
+					if(type == 'findpwd') {
+						content = '密码修改成功！<br>可立即登陆递咚管理平台！';
+					}
+					Etw.Msg.show({
+						title: '提交成功',
+						isHaveMask: true,
+						width: 400,
+						content: content
+						,icon: 'LOVE'
+						,quedingFn: fowordDdMangerSys
+					});
+				}
+			}
+		},
+		error: function() {
+			showTipWin(false, '提交处理失败，请稍后再试！');
+		}
+	});
 }
 
 /**
