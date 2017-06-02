@@ -14,14 +14,11 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.util.Assert;
 
 /**
- * 系统名称：递咚-中国互联网快递
- * 模块名称：
- * 模块描述：Web请求上下文信息
- * 功能列表：
- * 模块作者：ZOUYONG
- * 开发时间：2016年8月5日 下午3:38:58
- * 模块路径：com.didong.manager.frame.context.WebContext
- * 更新记录：
+ * @ClassName:WebContext
+ * @author: KarlWang
+ * @Description: TODO(Web请求上下文信息) 
+ * @date:2017年6月2日 下午6:52:39
+ * @see com.wangtao.blog.web.context.WebContext
  */
 public final class WebContext {
 
