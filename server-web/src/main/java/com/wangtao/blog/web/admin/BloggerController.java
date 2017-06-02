@@ -61,7 +61,7 @@ public class BloggerController {
 	@RequestMapping("/loginTest")
 	@ResponseBody
 	public String loginTest() {
-		List<BaseRegionEntity> regionTree= baseRegionService.baseRegionTree();
+		List<BaseRegionEntity> regionTree= this.baseRegionService.baseRegionTree("0");
 		System.out.println(regionTree);
 		logger.info("loging test ================================");
 		return "login";
