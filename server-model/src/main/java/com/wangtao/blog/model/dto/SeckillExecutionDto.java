@@ -1,6 +1,6 @@
 package com.wangtao.blog.model.dto;
 
-import com.wangtao.blog.common.enums.seckill.SeckillStatEnum;
+import com.wangtao.blog.common.constant.enums.seckill.SeckillStatEnum;
 import com.wangtao.blog.model.entity.seckill.SuccessKilledEntity;
 
 /**

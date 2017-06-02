@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wangtao.blog.dao.blogger.IBloggerDao">
+  	
+  	<sql id="select_param">
+		id,
+		user_name,
+		password,
+		type,
+		nick_name,
+		email,
+		sign,
+		profile,
+		head_img_url,
+		last_login,
+		active,
+		create_date,
+		create_user,
+		modify_date,
+		modify_user
+  	</sql>
+  	
+  	<select id="queryByUserName" parameterType="String" resultType="com.wangtao.blog.model.entity.blogger.BloggerEntity">
+  		SELECT <include refid="select_param"/> FROM t_auth_blogger b WHERE b.user_name = #{userName} 
+  	</select>
+  	
+  	
+  	<sql id="insert_param">
+		user_name,
+		password,
+		type,
+		nick_name,
+		email,
+		sign,
+		profile,
+		head_img_url,
+		last_login,
+		active,
+		create_date,
+		create_user,
+		modify_date,
+		modify_user
+  	</sql>
+  	
+  	<insert id="saveByEntity" parameterType="com.wangtao.blog.model.entity.blogger.BloggerEntity">
+  		INSERT INTO t_auth_blogger(
+  		<include refid="insert_param"/>
+  		) VALUES (
+  			<choose><when test="userName != null">#{userName}</when><otherwise>null</otherwise></choose>,
+  			<choose><when test="password != null">#{password}</when><otherwise>null</otherwise></choose>,
+  			<choose><when test="type != null">#{type}</when><otherwise>null</otherwise></choose>,
+  			<choose><when test="nickName != null">#{nickName}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="email != null">#{email}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="sign != null">#{sign}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="proFile != null">#{proFile}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="headImgUrl != null">#{headImgUrl}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="lastLogin != null">#{lastLogin}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="active != null">#{active}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="createDate != null">#{createDate}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="createUser != null">#{createUser}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="modifyDate != null">#{modifyDate}</when><otherwise>null</otherwise></choose>,
+			<choose><when test="modifyUser != null">#{modifyUser}</when><otherwise>null</otherwise></choose>
+  		)
+  	</insert>
+  	
+  </mapper>

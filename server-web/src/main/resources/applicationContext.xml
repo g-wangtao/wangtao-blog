@@ -15,20 +15,34 @@
     
     <description>spring公共配置</description>
     
-    <!-- 加载配置文件 -->
+    <!-- 开启注解 -->
+    <context:annotation-config />
+   	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.wangtao" />
+	
+	<!-- 加载配置文件 -->
 	<bean id="propertyConfigurer" 
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- 未知的属性 -->
+		<property name="properties" ref="configProperties"></property>
+		<!-- 配置文件路径 -->
 		<property name="locations">
 			<list>
 				<value>${public.type}</value>
 			</list>
 		</property>
 	</bean>
-    
-    <!-- 开启注解 -->
-    <context:annotation-config />
-   <!-- 自动扫描 -->
-	<context:component-scan base-package="com.wangtao" />
+	
+	<!-- 读取properties配置 -->
+	<bean id="configProperties" class="com.wangtao.blog.common.load.ApplicationPropertiesFactory">
+		<!-- 配置文件路径 -->
+		<property name="env" value="${public.type}"></property>
+	</bean>
+	
+	<!-- properties 工具类 -->
+	<bean id="global" class="com.wangtao.blog.common.properties.SystemGlobal">
+		<property name="properties" ref="configProperties"></property>
+	</bean>
 	
 	<import resource="datasource/datasource.xml"/>
 	

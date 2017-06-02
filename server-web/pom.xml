@@ -143,8 +143,8 @@
 				<version>2.2</version>
 				<!-- 配置tomcat属性 -->
 				<configuration>
-					<path>/wangtao-blog</path>
-					<port>80</port>
+					<path>/blog</path>
+					<port>8099</port>
 				</configuration>
 				<!-- 配置package时启动 -->
 				<!-- <executions> <execution> <phase>package</phase> <goals> <goal>run</goal> 

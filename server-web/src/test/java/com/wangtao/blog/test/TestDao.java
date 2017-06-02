@@ -19,7 +19,7 @@ import com.wangtao.blog.model.entity.TestEntity;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 //告诉junit spring的配置文件
-@ContextConfiguration({"classpath:datasource/datasource.xml"})
+@ContextConfiguration({"classpath:applicationContext.xml"})
 public class TestDao {
 	
 	@Resource

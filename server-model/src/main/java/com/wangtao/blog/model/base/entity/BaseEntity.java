@@ -19,11 +19,11 @@ public class BaseEntity implements Serializable {
 
 	private long id; // 编号
 	
-	private char active; // 是否有效
+	private char active = 'Y'; // 是否有效
 
-	private String crateUser; // 创建人
+	private String createUser; // 创建人
 
-	private Date crateDate; // 创建时间
+	private Date createDate; // 创建时间
 
 	private String modifyUser; // 修改人
 
@@ -37,20 +37,20 @@ public class BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	public String getCrateUser() {
-		return crateUser;
+	public String getCreateUser() {
+		return createUser;
 	}
 
-	public void setCrateUser(String crateUser) {
-		this.crateUser = crateUser;
+	public void setCreateUser(String createUser) {
+		this.createUser = createUser;
 	}
 
-	public Date getCrateDate() {
-		return crateDate;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setCrateDate(Date crateDate) {
-		this.crateDate = crateDate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 	public String getModifyUser() {

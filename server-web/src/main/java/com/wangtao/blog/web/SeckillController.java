@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.wangtao.blog.common.enums.seckill.SeckillStatEnum;
+import com.wangtao.blog.common.constant.enums.seckill.SeckillStatEnum;
 import com.wangtao.blog.common.exception.seckill.RepeatKillException;
 import com.wangtao.blog.common.exception.seckill.SeckillCloseException;
 import com.wangtao.blog.core.seckill.ISeckillService;

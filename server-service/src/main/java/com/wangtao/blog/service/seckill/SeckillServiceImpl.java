@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
-import com.wangtao.blog.common.enums.seckill.SeckillStatEnum;
+import com.wangtao.blog.common.constant.enums.seckill.SeckillStatEnum;
 import com.wangtao.blog.common.exception.seckill.RepeatKillException;
 import com.wangtao.blog.common.exception.seckill.SeckillCloseException;
 import com.wangtao.blog.common.exception.seckill.SeckillException;

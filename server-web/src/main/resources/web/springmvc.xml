@@ -27,12 +27,12 @@
     <!--3：配置JSP 显示ViewResolver-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="pages/views/seckill/"/>
+        <property name="prefix" value="/pages/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
     <!--4:扫描web相关的controller-->
-    <context:component-scan base-package="com.wangtao.blog"/>
+    <context:component-scan base-package="com.wangtao.blog.web"/>
     <!-- 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     </bean>
