@@ -1,31 +1,38 @@
-package com.wangtao.blog.web.admin;
+package com.wangtao.blog.web.blogger;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.wangtao.blog.common.exception.BusinessException;
+import com.wangtao.blog.common.constant.interfaces.ISystemBaseConstant;
+import com.wangtao.blog.common.exception.blogger.BloggerException;
+import com.wangtao.blog.common.response.ResponseParameterEntity;
+import com.wangtao.blog.common.util.StringUtils;
 import com.wangtao.blog.core.blogger.IBloggerService;
 import com.wangtao.blog.core.region.IBaseRegionService;
 import com.wangtao.blog.model.entity.blogger.BloggerEntity;
 import com.wangtao.blog.model.entity.region.BaseRegionEntity;
+import com.wangtao.blog.web.base.AbstractBaseController;
 
 /**
  * @ClassName:BloggerController
  * @author: KarlWang
  * @Description: TODO(博主控制层)
  * @date:2017年4月10日 下午4:26:31
- * @see com.wangtao.blog.web.admin.BloggerController
+ * @see com.wangtao.blog.web.blogger.BloggerController
  */
 @Controller
 @RequestMapping("/blogger")
-public class BloggerController {
+public class BloggerController extends AbstractBaseController{
 
 	private final static Logger logger = Logger.getLogger(BloggerController.class);
 	
@@ -41,27 +48,41 @@ public class BloggerController {
 	}
 	
 	@RequestMapping("/login")
-	public String login(BloggerEntity blogger, HttpServletRequest request) {
-		logger.info("博主登陆..........");
-		try{
-			BloggerEntity loginBlogger = bloggerService.validate(blogger.getUserName(),blogger.getPassword());
-			request.setAttribute("blogger", loginBlogger);
-		}catch(BusinessException be) {
-			logger.info(be.getMessage(), be);
-			request.setAttribute("errorInfo", be.getMessage());
-			return "admin/login";
-		}catch(Exception e) {
-			logger.error(e.getMessage(), e);
-			request.setAttribute("errorInfo", "系统未知异常！");
-			return "admin/login";
+	public String login(HttpServletRequest request, 
+			HttpServletResponse response, @ModelAttribute("resp") ResponseParameterEntity resp) {
+		HttpSession session = request.getSession();
+		Object userObj = session.getAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY);
+		if(null != userObj) {
+			return "blogger/home";
 		}
-		return "admin/login";
+		String userName = request.getParameter("userName");
+		String password = request.getParameter("password");
+		String verifyCode =  request.getParameter("verifyCode");
+		if(StringUtils.isNotBlank(userName) && StringUtils.isNotBlank(password) && StringUtils.isNotBlank(verifyCode)) {
+			if(request.getSession().getAttribute("verifyCode").equals(verifyCode.toLowerCase())) {
+				try{
+					BloggerEntity loginBlogger = bloggerService.validate(userName,password,verifyCode);
+					request.getSession().setAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY, loginBlogger);
+					resp.setResultFlag(true);
+				}catch(BloggerException e) {
+					logger.error(e.getMessage(), e);
+					resp.setResultFlag(false);
+					resp.setMessage(e.getMessage());
+				}
+			} else{
+				resp.setResultFlag(false);
+				resp.setMessage("验证码错误！");
+			}
+			success(response, resp);
+			return null;
+		}
+		return "blogger/login";
 	}
 	
 	@RequestMapping("/loginTest")
 	@ResponseBody
 	public String loginTest() {
-		List<BaseRegionEntity> regionTree= this.baseRegionService.baseRegionTree("0");
+		List<BaseRegionEntity> regionTree = this.baseRegionService.baseRegionTree("0");
 		System.out.println(regionTree);
 		logger.info("loging test ================================");
 		return "login";

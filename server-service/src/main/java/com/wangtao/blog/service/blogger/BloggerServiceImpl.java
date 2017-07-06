@@ -43,7 +43,7 @@ public class BloggerServiceImpl implements IBloggerService {
 	}
 	
 	@Override
-	public BloggerEntity validate(String userName, String password) throws BusinessException {
+	public BloggerEntity validate(String userName, String password,String verifyCode) throws BusinessException {
 		if (StringUtils.isBlank(userName)) {
 			throw new BloggerException("登陆账号不能为空！");
 		}

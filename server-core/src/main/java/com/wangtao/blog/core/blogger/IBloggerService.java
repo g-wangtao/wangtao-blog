@@ -1,6 +1,5 @@
 package com.wangtao.blog.core.blogger;
 
-import com.wangtao.blog.common.exception.BusinessException;
 import com.wangtao.blog.model.entity.blogger.BloggerEntity;
 
 /**
@@ -16,5 +15,5 @@ public interface IBloggerService {
 	
 	boolean saveByEntity (BloggerEntity entity);
 	
-	BloggerEntity validate(String account, String password)throws BusinessException;
+	BloggerEntity validate(String account, String password, String verifyCode);
 }

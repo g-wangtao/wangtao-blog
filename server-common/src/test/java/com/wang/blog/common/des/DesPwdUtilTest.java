@@ -27,13 +27,13 @@ public class DesPwdUtilTest {
 		}
     }
     
-    //@Test
+    @Test
     public void desPwdDecode(){
     	String data = "773995514";
         String key = "011111100001";
         try {
         	System.err.println(DesPwdUtil.encrypt(data, key));
-			System.err.println(DesPwdUtil.decrypt("B2QEE838Cvs=", key));
+			System.err.println(DesPwdUtil.decrypt("cWvioEyE5RSstqU", key));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -41,7 +41,7 @@ public class DesPwdUtilTest {
 		}
     }
     
-    @Test
+    // @Test
     public void desPwd() {
     	String key = "011111100001";
     	String data = "773995514@qq.com";

@@ -37,15 +37,14 @@
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     </bean>
      -->
+     
     <!-- 拦截器配置-start -->
-    <!-- 
     <mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="com.didong.manager.frame.interceptor.SystemInterceptor" />
+			<bean class="com.wangtao.blog.common.interceptor.SystemInterceptor" />
 	    </mvc:interceptor>
 	</mvc:interceptors>
-	 -->
 	<!-- 拦截器配置-end -->
 	
 </beans>

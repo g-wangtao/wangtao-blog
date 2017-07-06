@@ -1,3 +1,20 @@
+$(function(){
+	$("#userName").keydown(function (event){
+		if (event && event.keyCode == 13) {
+	        $("#password").focus();
+	    }       
+	});
+	$("#password").keydown(function (event){
+		if(event && event.keyCode == 13) {
+			$("#verifyCode").focus();
+		}
+	});
+	$("#verifyCode").keydown(function (event){
+	    if (event && event.keyCode == 13) {
+	    	loginHandler();
+	    }
+	});
+})        
 /**
  * 博主登录
  * @returns
@@ -5,41 +22,31 @@
 function loginHandler() {
 	var userName = $('#userName').val().trim();
 	var password = $('#password').val().trim();
-	var message = check(userName,password);
+	var verifyCode = $('#verifyCode').val().trim();
+	var message = check(userName,password,verifyCode);
 	if(message != null) {
 		messageDiv(message);
-		switchVerifyImg();
 		return;
 	}
+	var data = {'userName':userName,'password':password,'verifyCode':verifyCode};
 	$.ajax({
 		type: 'POST',
-		url: didMain.contentPath + 'sqrz/expReg/'+type,
+		url: 'blogger/login',
 		processData: true,
-		data: $(".sqrzRegParamsFrom").serialize(),
+		data: data,
 		success: function(callData) {
 			var json = eval('(' + callData + ')');
 			if(json) {
-				if(isUndefined(json.message)) {
-					showTipWin(true, json.message);
-				}
-				else {
-					var content = '恭喜您，入驻递咚平台成功！<br>关闭窗口后即可立即登录递咚管理平台！';
-					if(type == 'findpwd') {
-						content = '密码修改成功！<br>可立即登陆递咚管理平台！';
-					}
-					Etw.Msg.show({
-						title: '提交成功',
-						isHaveMask: true,
-						width: 400,
-						content: content
-						,icon: 'LOVE'
-						,quedingFn: fowordDdMangerSys
-					});
+				if(json.isSuccess){
+					window.location.herf = "";
+				}else {
+					switchVerifyImg()
+					messageDiv(json.message);
 				}
 			}
 		},
 		error: function() {
-			showTipWin(false, '提交处理失败，请稍后再试！');
+			messageDiv('登陆失败，请稍后再试！');
 		}
 	});
 }
@@ -51,16 +58,26 @@ function loginHandler() {
  * @param verifyCode验证码
  * @returns message 验证信息字符串
  */
-function check(userName,password) {
+function check(userName,password,verifyCode) {
 	var message = null;
 	if (userName == "" || userName == null || userName == undefined) {
-		message = "账号不能为空!";
+		message = " 账号不能为空!";
+		$("#userName").focus();
 	}
 	if (password == '' || password == null || password == undefined) {
 		if (message != null) {
 			message = message + " 密码不能为空！";
 		} else {
 			message = "密码不能为空！";
+			$("#password").focus();
+		}
+	}
+	if(verifyCode == "" || verifyCode == null || verifyCode == undefined) {
+		if(message != null) {
+			message = message + "验证码不能为空！";
+		} else {
+			message = "验证码不能为空！";
+			$("#verifyCode").focus();
 		}
 	}
 	return message;
