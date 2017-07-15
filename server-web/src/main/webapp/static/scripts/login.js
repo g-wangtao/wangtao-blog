@@ -38,7 +38,7 @@ function loginHandler() {
 			var json = eval('(' + callData + ')');
 			if(json) {
 				if(json.isSuccess){
-					window.location.herf = "";
+					window.location.herf = "http://www.baidu.com";
 				}else {
 					switchVerifyImg()
 					messageDiv(json.message);

@@ -1,7 +1,5 @@
 package com.wangtao.blog.web.blogger;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wangtao.blog.common.constant.interfaces.ISystemBaseConstant;
 import com.wangtao.blog.common.exception.blogger.BloggerException;
@@ -20,7 +17,6 @@ import com.wangtao.blog.common.util.StringUtils;
 import com.wangtao.blog.core.blogger.IBloggerService;
 import com.wangtao.blog.core.region.IBaseRegionService;
 import com.wangtao.blog.model.entity.blogger.BloggerEntity;
-import com.wangtao.blog.model.entity.region.BaseRegionEntity;
 import com.wangtao.blog.web.base.AbstractBaseController;
 
 /**
@@ -42,10 +38,10 @@ public class BloggerController extends AbstractBaseController{
 	@Autowired
 	IBaseRegionService baseRegionService;
 	
-	@RequestMapping(value = "/")
+/*	@RequestMapping(value = "/")
 	public String index() {
 		return "admin/login";
-	}
+	}*/
 	
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, 
@@ -54,6 +50,7 @@ public class BloggerController extends AbstractBaseController{
 		Object userObj = session.getAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY);
 		if(null != userObj) {
 			return "blogger/home";
+			// return "forward:blogger/home.jsp";
 		}
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
@@ -62,7 +59,7 @@ public class BloggerController extends AbstractBaseController{
 			if(request.getSession().getAttribute("verifyCode").equals(verifyCode.toLowerCase())) {
 				try{
 					BloggerEntity loginBlogger = bloggerService.validate(userName,password,verifyCode);
-					request.getSession().setAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY, loginBlogger);
+					session.setAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY, loginBlogger);
 					resp.setResultFlag(true);
 				}catch(BloggerException e) {
 					logger.error(e.getMessage(), e);
@@ -79,12 +76,13 @@ public class BloggerController extends AbstractBaseController{
 		return "blogger/login";
 	}
 	
-	@RequestMapping("/loginTest")
-	@ResponseBody
-	public String loginTest() {
-		List<BaseRegionEntity> regionTree = this.baseRegionService.baseRegionTree("0");
-		System.out.println(regionTree);
-		logger.info("loging test ================================");
-		return "login";
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("resp") ResponseParameterEntity resp) {
+		HttpSession session = request.getSession();
+		session.removeAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY);
+		session.invalidate();
+		resp.setResultFlag(true);
+		success(response, resp);
+		return "blogger/login";
 	}
 }
