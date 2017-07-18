@@ -37,8 +37,8 @@ function loginHandler() {
 		success: function(callData) {
 			var json = eval('(' + callData + ')');
 			if(json) {
-				if(json.isSuccess){
-					window.location.herf = "http://www.baidu.com";
+				if(json.resultFlag){
+					window.location.href = "blogger/login";
 				}else {
 					switchVerifyImg()
 					messageDiv(json.message);

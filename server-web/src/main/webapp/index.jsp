@@ -3,9 +3,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+        <jsp:include page="pages/views/common/com_head.jsp"/>
     </head>
     <body>
+    	<script type="text/javascript">
+    		alert(blogMain.contentPath);
+    	</script>
+    	<h1>${contentPath}</h1>
  	</body>
 </html>

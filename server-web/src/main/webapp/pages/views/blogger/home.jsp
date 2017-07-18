@@ -475,7 +475,8 @@
 								url: url,
 								data: {},
 								success: function(callData) {
-									window.location.href = didMain.contentPath;
+									// window.location.href = didMain.contentPath;
+									window.location.href = "";
 								},
 								error: function() {
 									showTipWin(false, '处理失败，请稍后再试！');

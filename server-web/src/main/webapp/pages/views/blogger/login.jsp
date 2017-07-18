@@ -179,13 +179,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			</div>
 		</div>
 		<script>
-			console.log($("#uname"))
-			$("#uname").keydown(function(event) {
-				alert(123)
-				if(event.keyCode == 13) {
-					$("#password").focus();
-				}
-			});
 			// 随机背景
 			function rd(begin, end) {
 				return Math.floor(Math.random() * (end - begin)) + begin;;

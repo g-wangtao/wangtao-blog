@@ -8,10 +8,10 @@
 <%-- <link rel="shortcut icon" href="${contentPath}statics/images/common/ico/didong_logo.ico" mce_href="${contentPath}statics/images/common/ico/didong_logo.ico" type="image/x-icon"> --%>
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="${contentPath}statics/css/common/common.css">
+<%-- <link rel="stylesheet" type="text/css" href="${contentPath}statics/css/common/common.css">
 <!-- JS-File -->
 <script type="text/javascript" src="${contentPath}static/scripts/plugins/jquery/3.1.1/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="${contentPath}static/scripts/login.js"></script>
+<script type="text/javascript" src="${contentPath}static/scripts/login.js"></script> --%>
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
 <!-- JS-Code -->
