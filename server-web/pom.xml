@@ -144,7 +144,7 @@
 				<version>2.2</version>
 				<!-- 配置tomcat属性 -->
 				<configuration>
-					<path>/blog</path>
+					<path>/</path>
 					<port>8099</port>
 				</configuration>
 				<!-- 配置package时启动 -->

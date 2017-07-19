@@ -1,5 +1,7 @@
 package com.wangtao.blog.web.blogger;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -38,19 +40,34 @@ public class BloggerController extends AbstractBaseController{
 	@Autowired
 	IBaseRegionService baseRegionService;
 	
-/*	@RequestMapping(value = "/")
+	@RequestMapping(value = "/")
 	public String index() {
 		return "admin/login";
-	}*/
+	}
 	
+	/**
+	 * @Title: login 
+	 * @Description: TODO(登陆) 
+	 * @param @param request
+	 * @param @param response
+	 * @param @param resp
+	 * @param @return 设定文件 
+	 * @return String 返回类型 
+	 * @throws
+	 */
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, 
 			HttpServletResponse response, @ModelAttribute("resp") ResponseParameterEntity resp) {
 		HttpSession session = request.getSession();
 		Object userObj = session.getAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY);
 		if(null != userObj) {
-			return "blogger/home";
-			// return "forward:blogger/home.jsp";
+			try {
+				response.sendRedirect("home");
+			} catch (IOException e) {
+				logger.error(e.getMessage(), e);
+				e.printStackTrace();
+			}
+			return null;
 		}
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
@@ -76,6 +93,22 @@ public class BloggerController extends AbstractBaseController{
 		return "blogger/login";
 	}
 	
+	@RequestMapping("home")
+	public String home(HttpServletRequest request, HttpServletResponse response, 
+			@ModelAttribute("resp") ResponseParameterEntity resp) {
+		return "blogger/home";
+	}
+	
+	/**
+	 * @Title: logout 
+	 * @Description: TODO(注销) 
+	 * @param @param request
+	 * @param @param response
+	 * @param @param resp
+	 * @param @return 设定文件 
+	 * @return String 返回类型 
+	 * @throws
+	 */
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request,HttpServletResponse response,@ModelAttribute("resp") ResponseParameterEntity resp) {
 		HttpSession session = request.getSession();

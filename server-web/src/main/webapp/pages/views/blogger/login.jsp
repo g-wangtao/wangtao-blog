@@ -149,7 +149,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									<input type="text" name="verifyCode" class="form-control text-input" placeholder="验证码" id="verifyCode">
 								</div>
 								<div class="pull-left">
-									<img src="/blog/verifyCode/create" id="verifyImg" class="verifyImg" alt="看不清" onclick="switchVerifyImg()" />
+									<img src="/verifyCode/create" id="verifyImg" class="verifyImg" alt="看不清" onclick="switchVerifyImg()" />
 								</div>
 							</div>
 

@@ -102,6 +102,6 @@ function messageDiv(messageStr) {
  * @returns
  */
 function switchVerifyImg() {
-    $("#verifyImg").attr("src","/blog/verifyCode/create?timestamp="+new Date().getTime());
+    $("#verifyImg").attr("src","/verifyCode/create?timestamp="+new Date().getTime());
 }
 

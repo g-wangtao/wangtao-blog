@@ -4,12 +4,13 @@
 <html>
 
 	<head>
-		<meta charset="UTF-8">
+		<!-- <meta charset="UTF-8"> -->
 		<title></title>
+		<jsp:include page="../common/com_head.jsp"></jsp:include>
 		<!--全局-->
-		<link href="http://staticyx.lnetco.com/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-		<script src="http://staticyx.lnetco.com/global/vue.min.js"></script>
-		<script src="http://staticyx.lnetco.com/global/jquery.min.3.1.1.js"></script>
+		<!-- <link href="http://staticyx.lnetco.com/bootstrap/css/bootstrap.min.css" rel="stylesheet" /> -->
+		<!-- <script src="http://staticyx.lnetco.com/global/vue.min.js"></script> -->
+		<!-- <script src="http://staticyx.lnetco.com/global/jquery.min.3.1.1.js"></script> -->
 		<link href="http://staticyx.lnetco.com/bootstrap/css/icons/icomoon/styles.css" rel="stylesheet" />
 		<link href="http://staticyx.lnetco.com/layouts/css/loading_xbox.css" rel="stylesheet" />
 		<link href="http://staticyx.lnetco.com/layouts/css/main_layout.css" rel="stylesheet" />
@@ -379,8 +380,6 @@
 		</div>
 		<!--设置页面-->
 		@RenderPage("SettingTabs.cshtml")
-		<!--<script src="./horizontal/main_layout.js"></script>-->
-		<!--<script src="/element.1.2.3/index.js"></script>-->
 		<script>
 			var onLogout;
 			$(function() {
@@ -393,7 +392,6 @@
 						"http://staticyx.lnetco.com/layouts/horizontal/layout-color.css",
 						"http://staticyx.lnetco.com/global/tree-json.js",
 						"http://staticyx.lnetco.com/layouts/horizontal/main_layout.js"
-						// "http://p.91scm.com:10003/erptest/m.js"
 					],
 					load() {
 						layout.menuBar = [{
@@ -450,7 +448,7 @@
 									"chindren": null
 								}
 							]
-						}]; /*@ViewData["menu"]*/ ;
+						}]; /*@ViewData["menu"]*/
 						setTimeout(function() {
 							$(".main_loading").fadeOut();
 							store.set('layout', "horizontal");
@@ -469,14 +467,13 @@
 						});
 						/**------ 退出系统操作 ------*/
 						setTimeout(function() {
-							var url = didMain.contentPath + 'blogger/logout';
+							var url = blogMain.contentPath + 'blogger/logout';
 							$.ajax({
 								type: 'POST',
 								url: url,
 								data: {},
 								success: function(callData) {
-									// window.location.href = didMain.contentPath;
-									window.location.href = "";
+									window.location.href = blogMain.contentPath + "blogger/login";
 								},
 								error: function() {
 									showTipWin(false, '处理失败，请稍后再试！');
@@ -484,7 +481,6 @@
 							});
 						}, 1200);
 						// 发送登出请求
-						
 					}).catch(() => {
 						Vue.prototype.$message({
 							type: 'info',

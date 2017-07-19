@@ -52,7 +52,7 @@ public class CommonFilter extends DefaultFilter {
 		// 请求的uri
 		String uri = sreq.getRequestURI();
 		// 不过滤的uri
-		String[] notFilter = new String[] { "/blogger/login", "blog/", "/test/query", "/user/workPushCordPage", "/user/clock" };
+		String[] notFilter = new String[] { "/blogger/login", "/test/query","/verifyCode/create","/static/"};
 		
 		HttpSession session = sreq.getSession();
 		Object userObj = session.getAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY);
