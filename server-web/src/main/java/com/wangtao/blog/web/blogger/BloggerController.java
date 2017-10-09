@@ -69,13 +69,13 @@ public class BloggerController extends AbstractBaseController{
 			}
 			return null;
 		}
-		String userName = request.getParameter("userName");
+		String userCode = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String verifyCode =  request.getParameter("verifyCode");
-		if(StringUtils.isNotBlank(userName) && StringUtils.isNotBlank(password) && StringUtils.isNotBlank(verifyCode)) {
+		if(StringUtils.isNotBlank(userCode) && StringUtils.isNotBlank(password) && StringUtils.isNotBlank(verifyCode)) {
 			if(request.getSession().getAttribute("verifyCode").equals(verifyCode.toLowerCase())) {
 				try{
-					BloggerEntity loginBlogger = bloggerService.validate(userName,password,verifyCode);
+					BloggerEntity loginBlogger = bloggerService.validate(userCode,password,verifyCode);
 					session.setAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY, loginBlogger);
 					resp.setResultFlag(true);
 				}catch(BloggerException e) {

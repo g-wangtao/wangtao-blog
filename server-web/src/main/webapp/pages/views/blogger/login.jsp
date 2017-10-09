@@ -6,16 +6,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 %>
 <!DOCTYPE html>
 <html>
-
 	<head>
-		<base href="<%=basePath%>">
+		<base href="${contentPath}">
+		<jsp:include page="../common/com_head.jsp"></jsp:include>
 		<link href="static/styles/login/styles.css" rel="stylesheet" />
 		<link href="static/styles/login/stars.css" rel="stylesheet" />
-		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-		<script src="static/scripts/plugins/jquery/3.1.1/jquery-3.1.1.min.js"></script>
 		<script src="static/scripts/login.js"></script>
 		<title>BLOG登陆</title>
-
 		<style>
 			.verifyImg {
 				cursor: pointer;
@@ -149,7 +146,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 									<input type="text" name="verifyCode" class="form-control text-input" placeholder="验证码" id="verifyCode">
 								</div>
 								<div class="pull-left">
-									<img src="/verifyCode/create" id="verifyImg" class="verifyImg" alt="看不清" onclick="switchVerifyImg()" />
+									<img src="verifyCode/create" id="verifyImg" class="verifyImg" alt="看不清" onclick="switchVerifyImg()" />
 								</div>
 							</div>
 

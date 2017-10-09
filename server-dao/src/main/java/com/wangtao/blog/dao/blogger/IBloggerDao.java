@@ -11,7 +11,7 @@ import com.wangtao.blog.model.entity.blogger.BloggerEntity;
  */
 public interface IBloggerDao {
 	
-	BloggerEntity queryByUserName(String userName);
+	BloggerEntity queryByUserCode(String userCode);
 	
 	int saveByEntity (BloggerEntity entity);
 }

@@ -11,7 +11,7 @@ import com.wangtao.blog.model.entity.blogger.BloggerEntity;
  */
 public interface IBloggerService {
 	
-	BloggerEntity queryByUserName(String userName);
+	BloggerEntity queryByUserCode(String userCode);
 	
 	boolean saveByEntity (BloggerEntity entity);
 	

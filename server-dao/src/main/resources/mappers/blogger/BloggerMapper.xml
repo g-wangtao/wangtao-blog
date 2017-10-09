@@ -6,7 +6,7 @@
   	
   	<sql id="select_param">
 		id,
-		user_name,
+		user_code,
 		password,
 		type,
 		nick_name,
@@ -22,13 +22,13 @@
 		modify_user
   	</sql>
   	
-  	<select id="queryByUserName" parameterType="String" resultType="com.wangtao.blog.model.entity.blogger.BloggerEntity">
-  		SELECT <include refid="select_param"/> FROM t_auth_blogger b WHERE b.user_name = #{userName} 
+  	<select id="queryByUserCode" parameterType="String" resultType="com.wangtao.blog.model.entity.blogger.BloggerEntity">
+  		SELECT <include refid="select_param"/> FROM t_auth_user u WHERE u.user_code = #{userCode} 
   	</select>
   	
   	
   	<sql id="insert_param">
-		user_name,
+		user_code,
 		password,
 		type,
 		nick_name,
@@ -45,10 +45,10 @@
   	</sql>
   	
   	<insert id="saveByEntity" parameterType="com.wangtao.blog.model.entity.blogger.BloggerEntity">
-  		INSERT INTO t_auth_blogger(
+  		INSERT INTO t_auth_user(
   		<include refid="insert_param"/>
   		) VALUES (
-  			<choose><when test="userName != null">#{userName}</when><otherwise>null</otherwise></choose>,
+  			<choose><when test="userCode != null">#{userCode}</when><otherwise>null</otherwise></choose>,
   			<choose><when test="password != null">#{password}</when><otherwise>null</otherwise></choose>,
   			<choose><when test="type != null">#{type}</when><otherwise>null</otherwise></choose>,
   			<choose><when test="nickName != null">#{nickName}</when><otherwise>null</otherwise></choose>,

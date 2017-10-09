@@ -22,7 +22,7 @@ public class BloggerServiceTest {
 	//@Test
 	public void testSave() {
 		BloggerEntity blogger = new BloggerEntity();
-		blogger.setUserName("admin");
+		blogger.setUserCode("admin");
 		blogger.setPassword(CryptoUtil.digestByEncode("123456"));
 		blogger.setType("admin");
 		blogger.setNickName("大无畏");
@@ -31,7 +31,7 @@ public class BloggerServiceTest {
 		blogger.setActive('Y');
 		blogger.setCreateDate(new Date());
 		blogger.setCreateUser("admin");
-		
+
 		try{
 			System.out.println(bloggerService.saveByEntity(blogger));
 		} catch(Exception e) {
@@ -41,7 +41,7 @@ public class BloggerServiceTest {
 	
 	@Test
 	public void testQuery() {
-		BloggerEntity blogger = bloggerService.queryByUserName("admin");
+		BloggerEntity blogger = bloggerService.queryByUserCode("admin");
 		boolean success =  CryptoUtil.digestByEncode("123456").equals(blogger.getPassword());
 		if(success) {
 			System.out.println("success");

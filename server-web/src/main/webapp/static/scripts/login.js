@@ -40,6 +40,7 @@ function loginHandler() {
 				if(json.resultFlag){
 					window.location.href = "blogger/login";
 				}else {
+					$("#password").val()
 					switchVerifyImg()
 					messageDiv(json.message);
 				}
@@ -102,6 +103,6 @@ function messageDiv(messageStr) {
  * @returns
  */
 function switchVerifyImg() {
-    $("#verifyImg").attr("src","/verifyCode/create?timestamp="+new Date().getTime());
+    $("#verifyImg").attr("src","verifyCode/create?timestamp="+new Date().getTime());
 }
 

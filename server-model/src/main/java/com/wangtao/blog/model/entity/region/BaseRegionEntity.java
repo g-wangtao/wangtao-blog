@@ -2,7 +2,7 @@ package com.wangtao.blog.model.entity.region;
 
 import java.util.List;
 
-import com.wangtao.blog.model.base.entity.BaseEntity;
+import com.wangtao.blog.model.base.BaseEntity;
 
 /**
  * @ClassName:BaseRegionEntity

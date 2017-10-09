@@ -27,11 +27,11 @@ public class BloggerServiceImpl implements IBloggerService {
 	IBloggerDao bloggerDao;
 
 	@Override
-	public BloggerEntity queryByUserName(String userName) {
-		if (StringUtils.isBlank(userName)) {
+	public BloggerEntity queryByUserCode(String userCode) {
+		if (StringUtils.isBlank(userCode)) {
 			return null;
 		}
-		return bloggerDao.queryByUserName(userName);
+		return bloggerDao.queryByUserCode(userCode);
 	}
 
 	@Override
@@ -43,14 +43,14 @@ public class BloggerServiceImpl implements IBloggerService {
 	}
 	
 	@Override
-	public BloggerEntity validate(String userName, String password,String verifyCode) throws BusinessException {
-		if (StringUtils.isBlank(userName)) {
+	public BloggerEntity validate(String userCode, String password,String verifyCode) throws BusinessException {
+		if (StringUtils.isBlank(userCode)) {
 			throw new BloggerException("登陆账号不能为空！");
 		}
 		if (StringUtils.isBlank(password)) {
 			throw new BloggerException("登陆密码不能为空！");
 		}
-		BloggerEntity blogger = this.queryByUserName(userName);
+		BloggerEntity blogger = this.queryByUserCode(userCode);
 		if (null == blogger) {
 			throw new BloggerException("账号不存在！");
 		}

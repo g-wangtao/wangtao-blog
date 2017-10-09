@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wangtao.blog.dao.ISequenceDao">
+  	
+  	<!-- 根据序列名称获取序列的下一个值 -->
+    <select id="selectNextIdBySeqName" resultType="long">
+		<![CDATA[ 
+			select nextval(#{seqName},#{idCount}) from dual 
+		]]>
+    </select>
+  	
+  	<select id="count" parameterType="com.wangtao.blog.model.SequenceEntity" resultType='Long'>
+		SELECT COUNT(MASTER.seq_name) FROM t_bas_sequence MASTER 
+		<!-- <include refid="queryWhere"/> -->
+	</select>
+  	
+  </mapper>

@@ -14,11 +14,11 @@ public enum BaseRegionEnum {
 	
 	REGION_TYPE__STREET("5","street","街道"),
 	;
-	private String regionType; // // 区域类型：country-0 、province-1、city-2、county-3、town-4、street-5
+	private String regionType; // 区域类型：country-0 、province-1、city-2、county-3、town-4、street-5
 	
 	private String degree; // 级别：country-国家 、province-省、city-市、county-县、town-乡镇、street-街道
 	
-	private String desc;	// 描述
+	private String desc; // 描述
 	
 	private BaseRegionEnum(String regionType,String degree,String desc) {
 		this.regionType = regionType;

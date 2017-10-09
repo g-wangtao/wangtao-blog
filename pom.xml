@@ -214,6 +214,6 @@
 		<module>server-service</module>
 		<module>server-dao</module>
 		<module>server-email</module>
-    <module>server-test</module>
-  </modules>
+		<module>server-test</module>
+	</modules>
 </project>

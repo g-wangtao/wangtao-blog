@@ -2,7 +2,7 @@ package com.wangtao.blog.model.entity.blogger;
 
 import java.util.Date;
 
-import com.wangtao.blog.model.base.entity.BaseEntity;
+import com.wangtao.blog.model.base.BaseEntity;
 
 /**
  * @ClassName:Blogger
@@ -18,7 +18,7 @@ public class BloggerEntity extends BaseEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String userName; // 用户名
+	private String userCode; // 用户名
 
 	private String password; // 密码
 
@@ -36,12 +36,12 @@ public class BloggerEntity extends BaseEntity {
 
 	private Date lastLogin; // 最后登陆时间
 
-	public String getUserName() {
-		return userName;
+	public String getUserCode() {
+		return userCode;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
 	}
 
 	public String getPassword() {

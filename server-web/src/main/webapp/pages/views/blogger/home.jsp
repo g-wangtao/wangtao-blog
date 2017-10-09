@@ -2,9 +2,7 @@
 <%@page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 	<head>
-		<!-- <meta charset="UTF-8"> -->
 		<title></title>
 		<jsp:include page="../common/com_head.jsp"></jsp:include>
 		<!--全局-->
@@ -57,7 +55,7 @@
 								<img :src=" 'http://staticyx.lnetco.com/imgs/default-user.png'" class="img-circle img-sm" alt="">
 							</a>
 							<div class="media-body">
-								<span class="media-heading text-semibold" id="userName">${BLOGGER_LOGIN_SESSION_KEY.userName}</span>
+								<span class="media-heading text-semibold" id="userName">${BLOGGER_LOGIN_SESSION_KEY.userCode}</span>
 								<div class="text-size-mini text-muted">
 									<!--<i class="icon-pin text-size-small" id="companyName"></i>-->
 									<i id="companyName">hello<!--@ViewData["companyName"]--></i>

@@ -1,4 +1,4 @@
-package com.wangtao.blog.model.base.entity;
+package com.wangtao.blog.model.base;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.Date;
  * @author: KarlWang
  * @Description: TODO(系统基础实体类) 
  * @date:2017年5月4日 下午2:13:45
- * @see com.wangtao.blog.model.base.entity.BaseEntity
+ * @see com.wangtao.blog.model.base.BaseEntity
  */
 public class BaseEntity implements Serializable {
 

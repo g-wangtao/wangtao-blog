@@ -18,6 +18,7 @@ import sun.misc.BASE64Encoder;
  * @date:2017年4月12日 下午4:13:42
  * @see com.wangtao.blog.common.util.des.DesPwdUtil
  */
+@SuppressWarnings("restriction")
 public class DesPwdUtil {
  
     private final static String DES = "DES";

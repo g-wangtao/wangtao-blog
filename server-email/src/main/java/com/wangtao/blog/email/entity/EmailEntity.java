@@ -1,6 +1,6 @@
 package com.wangtao.blog.email.entity;
 
-import com.wangtao.blog.model.base.entity.BaseEntity;
+import com.wangtao.blog.model.base.BaseEntity;
 
 /**
  * @ClassName:EmailEntity
