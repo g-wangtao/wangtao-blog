@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--用maven创建的web-app需要修改servlet的版本为3.0 -->
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance
-	http://www.springmodules.org/schema/cache/springmodules-cache.xsd 
-	http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
-    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/2002/xmlspec/dtd/2.10/xmlspec.dtd">
+<!-- 用Maven创建的Web-App需要修改Servlet的版本为3.0 -->
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance
+		http://www.springmodules.org/schema/cache/springmodules-cache.xsd 
+		http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd" 
+		xmlns="http://java.sun.com/xml/ns/javaee" 
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+		id="WebApp_ID" version="2.5">
+
 	<display-name>wangtao-blog</display-name>
 
 	<welcome-file-list>
