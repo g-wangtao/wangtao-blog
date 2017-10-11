@@ -93,23 +93,26 @@
 					<div class="row" style="margin-left: 0;margin-right: 0;width: 100%;">
 						<div class="col-sm-3">
 							<span v-on:click="settingShow=true" style="cursor: pointer;" data-balloon="布局" v-bind:data-balloon-pos="top">
-                    <i class="icon-magic-wand"></i>
-                </span>
+                    			<i class="icon-magic-wand"></i>
+                			</span>
 						</div>
 						<div class="col-sm-3">
-							<span style="cursor: pointer;" data-balloon="聊天" v-bind:data-balloon-pos="top" onclick="window.location.href='./login/lockscreen.html'">
-                    <i class="icon-bubbles"></i>
-                </span>
+							<!-- <span style="cursor: pointer;" data-balloon="聊天" v-bind:data-balloon-pos="top" onclick="window.location.href='./login/lockscreen.html'">
+                    			<i class="icon-bubbles"></i>
+                			</span> -->
+                			<span data-balloon="帮助文档" data-balloon-pos="[object Window]" onclick="window.open('http://staticyx.lnetco.com/tmshelp1/')" style="cursor: pointer;">
+								<i class="icon-help"></i>
+							</span>
 						</div>
 						<div class="col-sm-3">
 							<span style="cursor: pointer;" data-balloon="锁屏" v-bind:data-balloon-pos="top" onclick="window.location.href='./login/lockscreen.html'">
-                    <i class="icon-lock2"></i>
-                </span>
+                    			<i class="icon-lock2"></i>
+                			</span>
 						</div>
 						<div class="col-sm-3">
 							<span style="cursor: pointer;" data-balloon="注销" v-bind:data-balloon-pos="top" onclick="onLogout()">
-                    <i class="icon-exit3"></i>
-                </span>
+                    			<i class="icon-exit3"></i>
+               	 			</span>
 						</div>
 					</div>
 				</div>
