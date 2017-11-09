@@ -1,4 +1,4 @@
-package com.wangtao.blog.web.blogger;
+package com.wangtao.blog.web.controller;
 
 import java.io.IOException;
 
@@ -26,13 +26,13 @@ import com.wangtao.blog.web.base.AbstractBaseController;
  * @author: KarlWang
  * @Description: TODO(博主控制层)
  * @date:2017年4月10日 下午4:26:31
- * @see com.wangtao.blog.web.blogger.BloggerController
+ * @see com.wangtao.blog.web.controller.ResourceController
  */
 @Controller
-@RequestMapping("/blogger")
-public class BloggerController extends AbstractBaseController{
+@RequestMapping("/resource")
+public class ResourceController extends AbstractBaseController{
 
-	private final static Logger logger = Logger.getLogger(BloggerController.class);
+	private final static Logger logger = Logger.getLogger(ResourceController.class);
 	
 	@Autowired
 	IBloggerService bloggerService;
@@ -97,8 +97,7 @@ public class BloggerController extends AbstractBaseController{
 	public String home(HttpServletRequest request, HttpServletResponse response, 
 			@ModelAttribute("resp") ResponseParameterEntity resp) {
 		String menu = "[{\"menuId\":\"10\",\"parentId\":\"0\",\"menuName\":\"系统设置\",\"menuUrl\":\"\",\"chindren\":[{\"menuId\":\"1001\",\"parentId\":null,\"menuName\":\"用户\",\"menuUrl\":\"\",\"chindren\":[{\"menuId\":\"100101\",\"parentId\":null,\"menuName\":\"普通用户\",\"menuUrl\":\"http://erp.yx.com/User\",\"chindren\":null},{\"menuId\":\"100102\",\"parentId\":null,\"menuName\":\"我的管理员\",\"menuUrl\":\"http://erp.yx.com/UserAdmin/MyIndex\",\"chindren\":null},{\"menuId\":\"100103\",\"parentId\":null,\"menuName\":\"客户管理员\",\"menuUrl\":\"http://erp.yx.com/UserAdmin\",\"chindren\":null}]},{\"menuId\":\"1002\",\"parentId\":null,\"menuName\":\"角色\",\"menuUrl\":\"\",\"chindren\":[{\"menuId\":\"100201\",\"parentId\":null,\"menuName\":\"公司角色权限\",\"menuUrl\":\"http://erp.yx.com/CompanyRole\",\"chindren\":null}]},{\"menuId\":\"1003\",\"parentId\":null,\"menuName\":\"组织架构\",\"menuUrl\":\"http://erp.yx.com/OrgUnit\",\"chindren\":null}]}]";
-		// request.getSession().setAttribute("menu", menu);
-		request.setAttribute("menu", menu);
+		request.getSession().setAttribute("menu", menu);
 		return "blogger/home";
 	}
 	

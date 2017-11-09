@@ -1,0 +1,64 @@
+.self-dialog {
+}
+
+    .self-dialog .el-dialog__body,
+    .self-dialog .el-dialog__header {
+        padding: 0;
+        margin: 0;
+    }
+
+        .self-dialog .el-dialog__header .el-dialog__headerbtn {
+            position: absolute;
+            right: 12px;
+            z-index: 10;
+            top: 12px;
+            transition: all 0.26s;
+            -moz-transition: all 0.26s; /* Firefox 4 */
+            -webkit-transition: all 0.26s; /* Safari 和 Chrome */
+            -o-transition: all 0.26s; /* Opera */
+        }
+
+@media (max-width: 1550px) {
+    .self-dialog .el-dialog__header .el-dialog__headerbtn {
+        border-radius:2px;
+        right: -33px;
+        top: 4px;
+        background-color: #fff;
+        padding: 8px 10px;
+    }
+}
+
+.self-dialog .el-dialog__body .el-tabs__content {
+    padding: 10px 20px 15px;
+}
+
+input[type="file"].el-upload__input {
+    display: none;
+}
+
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+    .avatar-uploader .el-upload:hover {
+        border-color: #20a0ff;
+    }
+
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+}
+
+.avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}

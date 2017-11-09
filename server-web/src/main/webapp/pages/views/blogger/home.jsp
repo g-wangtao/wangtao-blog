@@ -120,12 +120,12 @@
 			<!--按钮-->
 			<div class="sidebar-button" v-bind:style="{bottom:sidebar.floatButtonH.value+'%'}">
 				<label for="sidebar-show" tabindex="0" class="mu-float-button mu-float-button-mini" style="-webkit-user-select: none; outline: none; cursor: pointer; -webkit-appearance: none;" v-bind:style="{'border-radius':(sidebar.floatButtonH.round?'50%':'0')}">
-        <div>
-            <div class="mu-float-button-wrapper">
-                <i class="icon-paragraph-justify3"></i>
-            </div>
-        </div>
-    </label>
+			        <div>
+			            <div class="mu-float-button-wrapper">
+			                <i class="icon-paragraph-justify3"></i>
+			            </div>
+			        </div>
+    			</label>
 			</div>
 			<!-- Modal -->
 			<div class="modal fade" v-bind:class="{'in':settingShow}" v-bind:style="{'display':(settingShow?'block':'none')}">
@@ -353,8 +353,8 @@
 								</div>
 								<div class="col-sm-1">
 									<span data-balloon-pos="top" data-balloon="重置" style="cursor: pointer;">
-            <i class="icon-reset" v-on:click="sidebar.floatButtonH.value=sidebar.floatButtonH.default"></i>
-        </span>
+            							<i class="icon-reset" v-on:click="sidebar.floatButtonH.value=sidebar.floatButtonH.default"></i>
+        							</span>
 								</div>
 								<div class="col-sm-1" data-balloon-pos="top" data-balloon="风格" style="cursor: pointer;">
 									<i v-bind:class="{'icon-radio-unchecked':sidebar.floatButtonH.round,'icon-checkbox-unchecked2':!sidebar.floatButtonH.round}" v-on:click="sidebar.floatButtonH.round=!sidebar.floatButtonH.round"></i>
@@ -380,13 +380,15 @@
 			</div>
 		</div>
 		<!--设置页面-->
-		@RenderPage("SettingTabs.cshtml")
+		<!-- @RenderPage("SettingTabs.cshtml") -->
+		<jsp:include page="settingTabs.jsp"/>
 		<script>
 			var onLogout;
 			$(function() {
 				addNodes({
 					parent: "head",
-					src: ["http://staticyx.lnetco.com/layouts/horizontal/switch1.css",
+					src: [
+						"http://staticyx.lnetco.com/layouts/horizontal/switch1.css",
 						"http://staticyx.lnetco.com/layouts/horizontal/balloon.min.css",
 						"http://staticyx.lnetco.com/layouts/horizontal/float-button.css",
 						"http://staticyx.lnetco.com/layouts/horizontal/main_layout.css",
@@ -395,61 +397,7 @@
 						"http://staticyx.lnetco.com/layouts/horizontal/main_layout.js"
 					],
 					load() {
-						layout.menuBar = [{
-							"menuId": "10",
-							"parentId": "0",
-							"menuName": "系统设置",
-							"menuUrl": "",
-							"chindren": [{
-									"menuId": "1001",
-									"parentId": null,
-									"menuName": "用户",
-									"menuUrl": "",
-									"chindren": [{
-											"menuId": "100101",
-											"parentId": null,
-											"menuName": "普通用户",
-											"menuUrl": "http://erp.yx.com/User",
-											"chindren": null
-										},
-										{
-											"menuId": "100102",
-											"parentId": null,
-											"menuName": "我的管理员",
-											"menuUrl": "http://erp.yx.com/UserAdmin/MyIndex",
-											"chindren": null
-										},
-										{
-											"menuId": "100103",
-											"parentId": null,
-											"menuName": "客户管理员",
-											"menuUrl": "http://erp.yx.com/UserAdmin",
-											"chindren": null
-										}
-									]
-								},
-								{
-									"menuId": "1002",
-									"parentId": null,
-									"menuName": "角色",
-									"menuUrl": "",
-									"chindren": [{
-										"menuId": "100201",
-										"parentId": null,
-										"menuName": "公司角色权限",
-										"menuUrl": "http://erp.yx.com/CompanyRole",
-										"chindren": null
-									}]
-								},
-								{
-									"menuId": "1003",
-									"parentId": null,
-									"menuName": "组织架构",
-									"menuUrl": "http://erp.yx.com/OrgUnit",
-									"chindren": null
-								}
-							]
-						}]; /*@ViewData["menu"]*/
+						layout.menuBar = ${menu};
 						setTimeout(function() {
 							$(".main_loading").fadeOut();
 							store.set('layout', "horizontal");
