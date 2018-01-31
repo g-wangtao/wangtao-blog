@@ -101,7 +101,7 @@
 	</appender>
 
 	<!-- 发ERROR邮件 -->
-	<appender name="mail" class="org.apache.log4j.net.SMTPAppender">
+	<appender name="Mail" class="org.apache.log4j.net.SMTPAppender">
 		<!-- 日子输出级别，只有ERROR以上时才会发送！ -->
 		<param name="threshold" value="ERROR" />
 		<!-- 缓存文件大小，日志达到512K时发送Email -->
@@ -109,9 +109,11 @@
 		<param name="From" value="simple52711@sina.com" />
 		<param name="SMTPHost" value="smtp.sina.com" />
 		<param name="Subject" value="juyee-log4jMessage" />
+		<!-- 切换为自己的邮箱 begin-->
 		<param name="To" value="773995514@qq.com" />
-		<param name="SMTPUsername" value="simple52711@sina.com" />
-		<param name="SMTPPassword" value="@wangtao5." />
+		<param name="SMTPUsername" value="*****@qq.com" />
+		<param name="SMTPPassword" value="*****" />
+		<!-- 切换为自己的邮箱 end-->
 		<param name="LocationInfo" value="false" />
 		<param name="SMTPDebug" value="false" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -145,7 +147,7 @@
 		<priority value="info" />
 		<appender-ref ref="Console" />
 		<appender-ref ref="ASYNC" />
-		<appender-ref ref="mail" />
+		<appender-ref ref="Mail" />
 	</root>
 
 </log4j:configuration>
