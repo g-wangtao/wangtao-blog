@@ -111,8 +111,8 @@
 		<param name="Subject" value="juyee-log4jMessage" />
 		<!-- 切换为自己的邮箱 begin-->
 		<param name="To" value="773995514@qq.com" />
-		<param name="SMTPUsername" value="*****@qq.com" />
-		<param name="SMTPPassword" value="*****" />
+		<param name="SMTPUsername" value="971115626@qq.com" />
+		<param name="SMTPPassword" value="*********" />
 		<!-- 切换为自己的邮箱 end-->
 		<param name="LocationInfo" value="false" />
 		<param name="SMTPDebug" value="false" />
