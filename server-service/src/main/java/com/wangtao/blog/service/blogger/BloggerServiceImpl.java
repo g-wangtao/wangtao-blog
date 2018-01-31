@@ -63,4 +63,85 @@ public class BloggerServiceImpl implements IBloggerService {
 		return blogger;
 	}
 
+	@Override
+	public String getMenuList() {
+		String m = "[\n" +
+				"  {\n" +
+				"    \"menuId\": \"10\",\n" +
+				"    \"parentId\": \"0\",\n" +
+				"    \"menuName\": \"系统设置\",\n" +
+				"    \"menuUrl\": \"\",\n" +
+				"    \"chindren\": [\n" +
+				"      {\n" +
+				"        \"menuId\": \"1001\",\n" +
+				"        \"parentId\": null,\n" +
+				"        \"menuName\": \"用户\",\n" +
+				"        \"menuUrl\": \"\",\n" +
+				"        \"chindren\": [\n" +
+				"          {\n" +
+				"            \"menuId\": \"100101\",\n" +
+				"            \"parentId\": null,\n" +
+				"            \"menuName\": \"普通用户\",\n" +
+				"            \"menuUrl\": \"http://erp.yx.com/User\",\n" +
+				"            \"chindren\": null\n" +
+				"          },\n" +
+				"          {\n" +
+				"            \"menuId\": \"100102\",\n" +
+				"            \"parentId\": null,\n" +
+				"            \"menuName\": \"我的管理员\",\n" +
+				"            \"menuUrl\": \"http://erp.yx.com/UserAdmin/MyIndex\",\n" +
+				"            \"chindren\": null\n" +
+				"          },\n" +
+				"          {\n" +
+				"            \"menuId\": \"100103\",\n" +
+				"            \"parentId\": null,\n" +
+				"            \"menuName\": \"客户管理员\",\n" +
+				"            \"menuUrl\": \"http://erp.yx.com/UserAdmin\",\n" +
+				"            \"chindren\": null\n" +
+				"          }\n" +
+				"        ]\n" +
+				"      },\n" +
+				"      {\n" +
+				"        \"menuId\": \"1002\",\n" +
+				"        \"parentId\": null,\n" +
+				"        \"menuName\": \"角色\",\n" +
+				"        \"menuUrl\": \"\",\n" +
+				"        \"chindren\": [\n" +
+				"          {\n" +
+				"            \"menuId\": \"100201\",\n" +
+				"            \"parentId\": null,\n" +
+				"            \"menuName\": \"公司角色权限\",\n" +
+				"            \"menuUrl\": \"http://erp.yx.com/CompanyRole\",\n" +
+				"            \"chindren\": null\n" +
+				"          }\n" +
+				"        ]\n" +
+				"      },\n" +
+				"      {\n" +
+				"        \"menuId\": \"1003\",\n" +
+				"        \"parentId\": null,\n" +
+				"        \"menuName\": \"组织架构\",\n" +
+				"        \"menuUrl\": \"http://erp.yx.com/OrgUnit\",\n" +
+				"        \"chindren\": null\n" +
+				"      }\n" +
+				"    ]\n" +
+				"  },\n" +
+				"  {\n" +
+				"    \"menuId\": \"20\",\n" +
+				"    \"parentId\": \"0\",\n" +
+				"    \"menuName\": \"博客管理\",\n" +
+				"    \"menuUrl\": \"\",\n" +
+				"    \"chindren\": [\n" +
+				"      {\n" +
+				"        \"menuId\": \"2004\",\n" +
+				"        \"parentId\": null,\n" +
+				"        \"menuName\": \"友情链接\",\n" +
+				"        \"menuUrl\": \"http://erp.yx.com/OrgUnit\",\n" +
+				"        \"chindren\": null\n" +
+				"      }\n" +
+				"    ]\n" +
+				"  }\n" +
+				"]";
+		return m;
+	}
+
 }

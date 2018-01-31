@@ -16,4 +16,6 @@ public interface IBloggerService {
 	boolean saveByEntity (BloggerEntity entity);
 	
 	BloggerEntity validate(String account, String password, String verifyCode);
+	
+	String getMenuList();
 }

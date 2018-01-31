@@ -14,7 +14,7 @@ $(function(){
 	    	loginHandler();
 	    }
 	});
-})        
+});        
 /**
  * 博主登录
  * @returns
@@ -25,29 +25,32 @@ function loginHandler() {
 	var verifyCode = $('#verifyCode').val().trim();
 	var message = check(userName,password,verifyCode);
 	if(message != null) {
-		messageDiv(message);
-		return;
+		// messageDiv(message);
+		return YX.Alert.warning(message);
 	}
 	var data = {'userName':userName,'password':password,'verifyCode':verifyCode};
 	$.ajax({
 		type: 'POST',
+		contentType: "application/x-www-form-urlencoded",
 		url: 'blogger/login',
 		processData: true,
 		data: data,
 		success: function(callData) {
-			var json = eval('(' + callData + ')');
-			if(json) {
-				if(json.resultFlag){
+			// var result = eval('(' + callData + ')');
+			if(callData) {
+				if(callData.resultFlag){
 					window.location.href = "blogger/login";
 				}else {
-					$("#password").val()
-					switchVerifyImg()
-					messageDiv(json.message);
+					$("#password").val();
+					switchVerifyImg();
+					YX.Alert.warning(callData.message);
+					// messageDiv(json.message);
 				}
 			}
 		},
 		error: function() {
-			messageDiv('登陆失败，请稍后再试！');
+			YX.Alert.warning('登陆失败，请稍后再试！');
+			// messageDiv('');
 		}
 	});
 }
@@ -89,14 +92,14 @@ function check(userName,password,verifyCode) {
  * @param messageStr
  * @returns
  */
-function messageDiv(messageStr) {
+/*function messageDiv(messageStr) {
 	$('body').append('<div id="message" class="alert alert-warning message">' + messageStr + '</div>');
 	function remove(){
 		$('#message').remove();
 	};
 	setTimeout(remove,1500);
 	return;
-}
+}*/
 
 /**
  * 切换图片验证码

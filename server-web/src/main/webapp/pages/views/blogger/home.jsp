@@ -39,7 +39,7 @@
 						</li>
 					</ul>
 					<div>
-						<iframe src=""></iframe>
+						<iframe src="${contentPath}/blogger/index"></iframe>
 					</div>
 				</div>
 			</div>
@@ -421,11 +421,11 @@
 								type: 'POST',
 								url: url,
 								data: {},
-								success: function(callData) {
+								success: function() {
 									window.location.href = blogMain.contentPath + "blogger/login";
 								},
 								error: function() {
-									showTipWin(false, '处理失败，请稍后再试！');
+									alert("处理失败，请稍后再试！");
 								}
 							});
 						}, 1200);

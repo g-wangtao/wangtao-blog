@@ -40,10 +40,10 @@ public class BloggerController extends AbstractBaseController{
 	@Autowired
 	IBaseRegionService baseRegionService;
 	
-	@RequestMapping(value = "/")
+	/*@RequestMapping(value = "/")
 	public String index() {
 		return "admin/login";
-	}
+	}*/
 	
 	/**
 	 * @Title: login 
@@ -93,13 +93,19 @@ public class BloggerController extends AbstractBaseController{
 		return "blogger/login";
 	}
 	
-	@RequestMapping("home")
+	@RequestMapping("/home")
 	public String home(HttpServletRequest request, HttpServletResponse response, 
 			@ModelAttribute("resp") ResponseParameterEntity resp) {
-		String menu = "[{\"menuId\":\"10\",\"parentId\":\"0\",\"menuName\":\"系统设置\",\"menuUrl\":\"\",\"chindren\":[{\"menuId\":\"1001\",\"parentId\":null,\"menuName\":\"用户\",\"menuUrl\":\"\",\"chindren\":[{\"menuId\":\"100101\",\"parentId\":null,\"menuName\":\"普通用户\",\"menuUrl\":\"http://erp.yx.com/User\",\"chindren\":null},{\"menuId\":\"100102\",\"parentId\":null,\"menuName\":\"我的管理员\",\"menuUrl\":\"http://erp.yx.com/UserAdmin/MyIndex\",\"chindren\":null},{\"menuId\":\"100103\",\"parentId\":null,\"menuName\":\"客户管理员\",\"menuUrl\":\"http://erp.yx.com/UserAdmin\",\"chindren\":null}]},{\"menuId\":\"1002\",\"parentId\":null,\"menuName\":\"角色\",\"menuUrl\":\"\",\"chindren\":[{\"menuId\":\"100201\",\"parentId\":null,\"menuName\":\"公司角色权限\",\"menuUrl\":\"http://erp.yx.com/CompanyRole\",\"chindren\":null}]},{\"menuId\":\"1003\",\"parentId\":null,\"menuName\":\"组织架构\",\"menuUrl\":\"http://erp.yx.com/OrgUnit\",\"chindren\":null}]}]";
+		
+		String menu = bloggerService.getMenuList();
 		// request.getSession().setAttribute("menu", menu);
 		request.setAttribute("menu", menu);
 		return "blogger/home";
+	}
+	
+	@RequestMapping("/index")
+	public String index(){
+		return "blogger/index";
 	}
 	
 	/**
