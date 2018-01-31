@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
-<log4j:configuration debug="false"
-	xmlns:log4j="http://jakarta.apache.org/log4j/">
+<log4j:configuration debug="false">
 
 	<!-- 输出日志到控制台 -->
 	<appender name="Console" class="org.apache.log4j.ConsoleAppender">

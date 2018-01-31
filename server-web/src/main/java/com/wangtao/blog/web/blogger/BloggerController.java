@@ -1,17 +1,5 @@
 package com.wangtao.blog.web.blogger;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.wangtao.blog.common.constant.interfaces.ISystemBaseConstant;
 import com.wangtao.blog.common.exception.blogger.BloggerException;
 import com.wangtao.blog.common.response.ResponseParameterEntity;
@@ -20,10 +8,20 @@ import com.wangtao.blog.core.blogger.IBloggerService;
 import com.wangtao.blog.core.region.IBaseRegionService;
 import com.wangtao.blog.model.entity.blogger.BloggerEntity;
 import com.wangtao.blog.web.base.AbstractBaseController;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 /**
  * @ClassName:BloggerController
- * @author: KarlWang
+ * @author: karl
  * @Description: TODO(博主控制层)
  * @date:2017年4月10日 下午4:26:31
  * @see com.wangtao.blog.web.blogger.BloggerController
@@ -46,18 +44,18 @@ public class BloggerController extends AbstractBaseController{
 	}*/
 	
 	/**
-	 * @Title: login 
-	 * @Description: TODO(登陆) 
-	 * @param @param request
-	 * @param @param response
-	 * @param @param resp
-	 * @param @return 设定文件 
-	 * @return String 返回类型 
+	 * @Title: login
+	 * @Description: TODO(用户登陆)
+	 * @param request
+	 * @param response
+	 * @param resp
+	 * @return java.lang.String
 	 * @throws
 	 */
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request, 
 			HttpServletResponse response, @ModelAttribute("resp") ResponseParameterEntity resp) {
+
 		HttpSession session = request.getSession();
 		Object userObj = session.getAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY);
 		if(null != userObj) {
@@ -107,15 +105,14 @@ public class BloggerController extends AbstractBaseController{
 	public String index(){
 		return "blogger/index";
 	}
-	
+
 	/**
-	 * @Title: logout 
-	 * @Description: TODO(注销) 
-	 * @param @param request
-	 * @param @param response
-	 * @param @param resp
-	 * @param @return 设定文件 
-	 * @return String 返回类型 
+	 * @Title: logout
+	 * @Description: TODO(用户注销)
+	 * @param request
+	 * @param response
+	 * @param resp
+	 * @return java.lang.String
 	 * @throws
 	 */
 	@RequestMapping("/logout")
