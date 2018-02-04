@@ -18,6 +18,7 @@
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script type="text/javascript" src="${contentPath}static/scripts/common.js"></script>
 
+
 <!-- JS-Code -->
 <script type="text/javascript">
 	if (typeof blogMain == 'undefined') {

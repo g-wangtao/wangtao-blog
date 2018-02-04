@@ -39,7 +39,7 @@
 						</li>
 					</ul>
 					<div>
-						<iframe src="${contentPath}/blogger/index"></iframe>
+						<iframe src="${contentPath}blogger/homeIndex"></iframe>
 					</div>
 				</div>
 			</div>

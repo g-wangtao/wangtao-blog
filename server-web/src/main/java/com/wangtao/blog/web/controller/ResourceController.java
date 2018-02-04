@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ResourceController extends AbstractBaseController{
 
 	private final static Logger logger = Logger.getLogger(ResourceController.class);
-	
 
+	static String s;
+
+	public static void main(String[] args){
+		System.out.println(s.replace("",""));
+	}
 }

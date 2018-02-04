@@ -10,5 +10,6 @@
     		alert(blogMain.contentPath);
     	</script>
     	<h1>${contentPath}</h1>
+        <h1>Hello World</h1>
  	</body>
 </html>

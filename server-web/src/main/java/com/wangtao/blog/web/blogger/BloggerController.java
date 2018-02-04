@@ -101,9 +101,9 @@ public class BloggerController extends AbstractBaseController{
 		return "blogger/home";
 	}
 	
-	@RequestMapping("/index")
+	@RequestMapping("/homeIndex")
 	public String index(){
-		return "blogger/index";
+		return "blogger/homeIndex";
 	}
 
 	/**

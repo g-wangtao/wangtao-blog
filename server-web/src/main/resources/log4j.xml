@@ -106,13 +106,14 @@
 		<param name="threshold" value="ERROR" />
 		<!-- 缓存文件大小，日志达到512K时发送Email -->
 		<param name="BufferSize" value="512" />
-		<param name="From" value="simple52711@sina.com" />
-		<param name="SMTPHost" value="smtp.sina.com" />
-		<param name="Subject" value="juyee-log4jMessage" />
 		<!-- 切换为自己的邮箱 begin-->
+		<param name="SMTPHost" value="smtp.qq.com" />
+		<param name="SMTPPort" value="587"/>
+		<param name="Subject" value="Log4j message" />
+		<param name="From" value="971115626@qq.com" />
 		<param name="To" value="773995514@qq.com" />
 		<param name="SMTPUsername" value="971115626@qq.com" />
-		<param name="SMTPPassword" value="*********" />
+		<param name="SMTPPassword" value="mcxyiipthqhjbfif" />
 		<!-- 切换为自己的邮箱 end-->
 		<param name="LocationInfo" value="false" />
 		<param name="SMTPDebug" value="false" />
