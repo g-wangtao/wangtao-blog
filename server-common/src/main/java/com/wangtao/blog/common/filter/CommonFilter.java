@@ -1,17 +1,12 @@
 package com.wangtao.blog.common.filter;
 
-import java.io.IOException;
+import com.wangtao.blog.common.constant.interfaces.ISystemBaseConstant;
 
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.wangtao.blog.common.constant.interfaces.ISystemBaseConstant;
+import java.io.IOException;
 
 /**
  * @ClassName:CommonFilter
@@ -40,9 +35,9 @@ public class CommonFilter extends DefaultFilter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain filterChain) throws IOException, ServletException {
 
-		HttpServletRequest sreq = null;
+		HttpServletRequest req = null;
 		if (request instanceof HttpServletRequest) {
-			sreq = (HttpServletRequest) request;
+			req = (HttpServletRequest) request;
 		}
 		HttpServletResponse resp = null;
 		if (response instanceof HttpServletResponse) {
@@ -50,11 +45,12 @@ public class CommonFilter extends DefaultFilter {
 		}
 		
 		// 请求的uri
-		String uri = sreq.getRequestURI();
+		String uri = req.getRequestURI();
+		// String uri = req.getServletPath();
 		// 不过滤的uri
 		String[] notFilter = new String[] { "/blogger/login", "/test/query","/verifyCode/create","/static/","/index"};
 		
-		HttpSession session = sreq.getSession();
+		HttpSession session = req.getSession();
 		Object userObj = session.getAttribute(ISystemBaseConstant.BLOGGER_LOGIN_SESSION_KEY);
 		if(null == userObj) {
 			// 是否过滤
@@ -67,7 +63,7 @@ public class CommonFilter extends DefaultFilter {
 				}
 			}
 			if(doFilter) {
-				resp.sendRedirect(sreq.getContextPath() + "/blogger/login");
+				resp.sendRedirect(req.getContextPath() + "/blogger/login");
 				return;
 			}
 		}
